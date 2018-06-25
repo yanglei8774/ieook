@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="aouo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="10-spring-boot-view-thymeleaf-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="aouo:war exploded" />
+    </root>
+  </artifact>
+</component>
