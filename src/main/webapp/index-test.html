@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta charset=utf-8>
+    <script type="application/javascript" src="../media/js/jquery-2.1.3.min.js"></script>
+
+
+
+</head>
+<body>
+<h3 id="h3">我是首页</h3>
+
+<script>
+    $.ajax({
+        url: '/index/aaaa',
+        method: 'post',
+        contentType: 'application/json',
+//            data: opostdata, // 以json字符串方式传递
+//        dataType: 'json',
+        async: false,
+        beforeSend: function(request) {
+        },
+        success: function (data) {
+            debugger;
+            $("#h3").html(data);
+        }
+    });
+</script>
+</body>

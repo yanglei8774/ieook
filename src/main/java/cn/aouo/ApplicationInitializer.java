@@ -58,7 +58,7 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
         public void configure(WebSecurity webSecurity) throws Exception {
             webSecurity.ignoring().antMatchers(
                     "/",                     //根目录
-                    "/images/**",
+                    "/media/**",
                     "/redirect/**",
                     "/api/**",
                     "/index/**",
