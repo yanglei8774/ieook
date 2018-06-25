@@ -45,6 +45,7 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
     }
 
+
     @Configuration
     @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
     public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
