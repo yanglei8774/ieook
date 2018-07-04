@@ -7,7 +7,12 @@
 
 
 $(document).ready(function () {
-
+    new Vue({
+        el: '#navbar-ul',
+        data: {
+            message: 'Vue!'
+        }
+    })
 
     // Add body-small class if window less than 768px
     if ($(this).width() < 769) {
