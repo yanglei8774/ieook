@@ -10,7 +10,8 @@ $(document).ready(function () {
     new Vue({
         el: '#navbar-ul',
         data: {
-            message: 'Vue!'
+            message: 'Vue!',
+            features:'featuresaa'
         }
     })
 

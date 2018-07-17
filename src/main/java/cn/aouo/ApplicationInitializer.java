@@ -9,6 +9,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,6 +19,7 @@ import org.springframework.security.config.annotation.web.configurers.DefaultLog
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -27,6 +30,8 @@ import java.util.List;
 @EnableScheduling
 public class ApplicationInitializer extends WebMvcConfigurerAdapter implements ApplicationListener<ContextRefreshedEvent> {
 
+    @Resource(name = "SYS_SEC_AuthenticationProvider")
+    private AuthenticationProvider custmAuthenticationProvider;
 
     /**
      * 配置拦截器
@@ -55,10 +60,59 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
         }
 
         @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            {
+                http
+                        .csrf().and()
+//                        .addFilter(new WebAsyncManagerIntegrationFilter())
+                        .exceptionHandling().and()
+                        .headers().and()
+                        .sessionManagement().and()
+                        .securityContext().and()
+                        .requestCache().and()
+                        .anonymous().and()
+                        .servletApi().and()
+                        .apply(new DefaultLoginPageConfigurer<HttpSecurity>()).and()
+                        .logout();
+                // @formatter:on
+                ClassLoader classLoader = this.getApplicationContext().getClassLoader();
+                List<AbstractHttpConfigurer> defaultHttpConfigurers =
+                        SpringFactoriesLoader.loadFactories(AbstractHttpConfigurer.class, classLoader);
+
+                for(AbstractHttpConfigurer configurer : defaultHttpConfigurers) {
+                    http.apply(configurer);
+                }
+            }
+            http
+                    .authorizeRequests()
+                    .anyRequest()
+                    .authenticated()
+                    .and()
+                    .formLogin()
+                    .loginPage("/login")
+                   // .failureHandler(authenticationFailureHandler)
+                    .defaultSuccessUrl("/")
+                    .permitAll()
+                    .and()
+                    .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/index")
+                    .permitAll()
+                    .invalidateHttpSession(true)
+                    .deleteCookies("_u")
+                    .clearAuthentication(true)
+                    .and()
+
+                    .csrf()
+                    .disable();
+        }
+
+        @Override
         public void configure(WebSecurity webSecurity) throws Exception {
             webSecurity.ignoring().antMatchers(
                     "/",                     //根目录
                     "/media/**",
+                    "/sign/**",
                     "/redirect/**",
                     "/api/**",
                     "/index/**",
@@ -66,6 +120,11 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
                     "/login_error"                  //登录错误页
                     );
 
+        }
+
+        @Override
+        public void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.authenticationProvider(custmAuthenticationProvider);
         }
 
     }
