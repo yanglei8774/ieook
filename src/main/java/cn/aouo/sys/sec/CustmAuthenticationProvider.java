@@ -79,10 +79,11 @@ public class CustmAuthenticationProvider implements AuthenticationProvider {
 
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String  passwordtype=request.getParameter("passwordtype").toString();
-        if("0".equals(passwordtype)){//密码
+        //String  passwordtype=request.getParameter("passwordtype").toString();
+        //if("0".equals(passwordtype)){//密码
             request.setAttribute("SPRING_SECURITY_LOGIN_MODE","USERNAME_PASSWORD");
-            if (passwordEncoder.isPasswordValid(userDetails.getPassword(), password, null)) {
+//            if (passwordEncoder.isPasswordValid(userDetails.getPassword(), password, null)) {
+            if (userDetails.getPassword().equals(password)) {
                 Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
                 try {
                     response.addCookie(new Cookie("_u", Base64.encodeBase64String((userDetails.getUserId()+"  "+userDetails.getUsername()).getBytes("utf-8"))));
@@ -93,8 +94,7 @@ public class CustmAuthenticationProvider implements AuthenticationProvider {
             }else{
                 throw new CredentialsExpiredException("用户名或密码错误！");
             }
-        }
-        throw new CredentialsExpiredException("用户名或密码错误！");
+        //}
     }
 
 

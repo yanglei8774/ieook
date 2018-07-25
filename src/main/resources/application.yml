@@ -1,15 +1,19 @@
 logging:
   config: classpath:logback.xml
 
-################### 数据库方言 ##########################
-jdbc:
-  dialect: MySQL
-  workid: 10
+
+
 ################### DataSource Configuration ##########################
 security:
   ignored: /**/**.js,/**/**.css,/**/**.png,/**/**.jpg,/**/**.html,/**/favicon.ico,/**/**.mp3,/**/**.gif,/**/**.mp4, /**/css/**
 
 spring:
+  datasource:
+     driver-class-name: com.mysql.jdbc.Driver
+     url: jdbc:mysql://120.27.50.195:3306/ieook
+     username: root
+     password: Neusoft@123
+
   devtools:
     restart:
       exclude: component/**,media/**,META-INF/**,templates/**,wechat/**,ow/**

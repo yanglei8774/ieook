@@ -14,6 +14,20 @@ $(document).ready(function () {
             features:'featuresaa'
         }
     })
+debugger;
+    var userCookie = $.getCookie("_u");
+    if (userCookie != null) {
+        var words = CryptoJS.enc.Base64.parse(userCookie);
+        var user = words.toString(CryptoJS.enc.Utf8).split("  ");
+        if (user.length > 1) {
+            var userid = user[0];
+            var username = user[1];
+            alert('欢迎你，'+username);
+            //$("#user").html('<a href="/individualCenter" style="color:#adb5c1;">欢迎你，' + username + '</a>');
+            //$("#opt").html('<a href="/logout" style="color:#adb5c1;">退出</a>');
+        }
+    }
+
 
     // Add body-small class if window less than 768px
     if ($(this).width() < 769) {

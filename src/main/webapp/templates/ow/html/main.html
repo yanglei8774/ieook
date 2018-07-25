@@ -14,4 +14,25 @@
 <body id="page-top" class="landing-page">
     <h1>个人中心</h1>
 </body>
+<script type="text/javascript" src="/media/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/media/js/common.js"></script>
+<script >
+    $(function() {
+
+        var oppodata = {};
+         $.dopost({
+             url: '/user/list',
+             param:JSON.stringify(oppodata),
+             type:'body',
+             success: function (data) {
+                 if (data.success) {
+                    debugger;
+                 }else{
+
+                 }
+            }
+         });
+    })
+
+</script>
 </html>

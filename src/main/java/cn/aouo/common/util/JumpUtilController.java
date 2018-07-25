@@ -25,7 +25,7 @@ public class JumpUtilController {
         return "index";
     }
 
-    @RequestMapping(value = "/sign",method = RequestMethod.GET)
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(HttpServletRequest request) {
         return "login";
     }
