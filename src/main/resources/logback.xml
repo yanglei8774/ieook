@@ -16,7 +16,7 @@
 		</encoder>
 	</appender>
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>d:/testFile.log</file>
+		<file>/home/tomcat/testFile.log</file>
 		<append>true</append>
 		<encoder>
 			<pattern>%d %-5level [%thread] %logger{36} - %msg%n</pattern>
