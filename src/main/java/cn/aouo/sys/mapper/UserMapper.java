@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     @Select("SELECT * FROM ow_user WHERE id = #{id}")
-    User getUserById(Integer id);
+    User getUserById(String id);
 
     @Select("SELECT * FROM ow_user")
     public List<User> getUserList();
@@ -25,4 +25,6 @@ public interface UserMapper {
     @Delete("DELETE from ow_user where id = #{id} ")
     public int delete(Integer id);
 
+    @Select("SELECT * FROM ow_user WHERE account = #{account}")
+    public List<User> getUserByAccount(String account);
 }

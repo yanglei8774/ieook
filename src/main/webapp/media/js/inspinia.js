@@ -23,7 +23,7 @@ debugger;
             var userid = user[0];
             var username = user[1];
             // alert('欢迎你，'+username);
-            $("#user").html('<a href="/main" style="color:#adb5c1;">欢迎你，' + username + '</a><a href="/main" style="color:#adb5c1;">main</a><a href="/logout" style="color:#adb5c1;">退出</a>');
+            $("#user").html('<a href="/main" style="color:#adb5c1;">欢迎你，' + username + '</a><a href="/logout" style="color:#adb5c1;">退出</a>');
 
             //$("#user").html('<a href="/individualCenter" style="color:#adb5c1;">欢迎你，' + username + '</a>');
             //$("#opt").html('<a href="/logout" style="color:#adb5c1;">退出</a>');

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    User getUserById(Integer id);
+    User getUserById(String id);
 
     public List<User> getUserList();
 
@@ -18,4 +18,6 @@ public interface UserService {
     public int update(Integer id, User user);
 
     public int delete(Integer id);
+
+    public List<User> getUserByAccount(String account);
 }

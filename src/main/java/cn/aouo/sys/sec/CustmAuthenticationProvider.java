@@ -82,8 +82,8 @@ public class CustmAuthenticationProvider implements AuthenticationProvider {
         //String  passwordtype=request.getParameter("passwordtype").toString();
         //if("0".equals(passwordtype)){//密码
             request.setAttribute("SPRING_SECURITY_LOGIN_MODE","USERNAME_PASSWORD");
-//            if (passwordEncoder.isPasswordValid(userDetails.getPassword(), password, null)) {
-            if (userDetails.getPassword().equals(password)) {
+            if (passwordEncoder.isPasswordValid(userDetails.getPassword(), password, null)) {
+//            if (userDetails.getPassword().equals(password)) {
                 Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
                 try {
                     response.addCookie(new Cookie("_u", Base64.encodeBase64String((userDetails.getUserId()+"  "+userDetails.getUsername()).getBytes("utf-8"))));

@@ -10,7 +10,7 @@ security:
 spring:
   datasource:
      driver-class-name: com.mysql.jdbc.Driver
-     url: jdbc:mysql://120.27.50.195:3306/ieook
+     url: jdbc:mysql://120.27.50.195:3306/ieook?useUnicode=true&characterEncoding=utf-8&useSSL=false
      username: root
      password: Neusoft@123
 

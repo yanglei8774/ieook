@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public User getUserById(Integer id) {
+    public User getUserById(String id) {
         return userMapper.getUserById(id);
     }
 
@@ -41,5 +41,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int delete(Integer id) {
         return userMapper.delete(id);
+    }
+
+    @Override
+    public List<User> getUserByAccount(String account) {
+        return userMapper.getUserByAccount(account);
     }
 }
