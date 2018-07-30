@@ -30,10 +30,17 @@ public class JumpUtilController {
         return "login";
     }
 
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    public String register(HttpServletRequest request) {
+        return "register";
+    }
+
     @RequestMapping(value = "/main",method = RequestMethod.GET)
     public String main(HttpServletRequest request) {
         return "ow/html/main";
     }
+
+
 
 
 

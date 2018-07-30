@@ -10,84 +10,9 @@ security:
   ignored: /**/**.js,/**/**.css,/**/**.png,/**/**.jpg,/**/**.html,/**/favicon.ico,/**/**.mp3,/**/**.gif,/**/**.mp4, /**/css/**
 
 spring:
-  application:
-    name: cic_m
   devtools:
     restart:
       exclude: component/**,media/**,META-INF/**,templates/**,wechat/**,ow/**
-  jmx:
-    enabled: false
-#  mvc:
-#    static-path-pattern: /**/**.js
-#  resources:
-#    static-locations: /**/**.css,/redirect/**,/**/**.js,/**/**.png,/**/**.jpg
-#  aop:
-#    proxy-target-class: false
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    type: com.alibaba.druid.pool.DruidDataSource
-##    url: jdbc:mysql://59.44.43.219:7005/zhlh_dev_new?useUnicode=true&characterEncoding=utf-8
-#    url: jdbc:mysql://10.101.19.165:7005/cic_uat?useUnicode=true&characterEncoding=utf-8
-##    url: jdbc:oracle://10.101.19.167:7002/minicms?useUnicode=true&characterEncoding=utf-8
-##    url: jdbc:mysql://localhost:3306/minicms?useUnicode=true&characterEncoding=utf-8
-#    username: root
-#    password: neusoft
-#    druid:
-#      initial-size: 1
-#      max-active: 20
-#      min-idle: 1
-#      max-wait: 60000
-#      pool-prepared-statements: true
-#      max-open-prepared-statements: 20
-#      validation-query: select 'x'
-#      validation-query-timeout: 100
-#      test-on-borrow: false
-#      test-on-return: false
-#      test-while-idle: true
-#      remove-abandoned: true
-#      remove-abandoned-timeout: 1800
-#      log-abandoned: true
-#
-#      filter:
-#        stat:
-#          enabled: false
-#
-##      filters: stat
-#      web-stat-filter:
-#        enabled: false
-##        url-pattern: /*
-##        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
-##        session-stat-enable: true
-##        session-stat-max-count: 1000
-##        profile-enable: true
-#      stat-view-servlet:
-#        enabled: false
-##        url-pattern: /druid/*
-##        reset-enable: true
-##      aop-patterns: 'com.neusoft.insurance.*'
-################### Redis Configuration ##########################
-
-#  redis:
-#    database: 1
-#    host: 101.200.54.163
-#    password: neusoftdev
-#    port: 6379
-#    pool:
-#      max-active: 400
-#      max-idle: 8
-#      min-idle: 0
-#      max-wait: 60000
-#    sentinel:
-#      master: # name of Redis server
-#      node: # comma-separated list of host:port pairs
-################### rocketmq Configuration ##########################
-#  rocketmq:
-#    namesrvAddr: 192.168.137.167:9876 #多个地址示例；name-server1-ip:9876;name-server2-ip:9876
-#    groupName: policy
-#    topicName: policyMessage
-#    tagName: policyTag
-#    maxNum: 32
-
   thymeleaf:
     cache: false
     check-template: true
@@ -97,6 +22,7 @@ spring:
     prefix: /templates/
     suffix: .html
     mode: HTML
+
 
   http:
     multipart:

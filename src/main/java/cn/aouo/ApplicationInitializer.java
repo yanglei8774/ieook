@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.DefaultLoginPageConfigurer;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -32,6 +33,9 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
 
     @Resource(name = "SYS_SEC_AuthenticationProvider")
     private AuthenticationProvider custmAuthenticationProvider;
+
+    @Resource(name = "SYS_SEC_AuthenticationFailureHandler")
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     /**
      * 配置拦截器
@@ -90,7 +94,8 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
                     .and()
                     .formLogin()
                     .loginPage("/login")
-                   // .failureHandler(authenticationFailureHandler)
+//                    .loginProcessingUrl("/login")
+                    //.failureHandler(authenticationFailureHandler)
                     .defaultSuccessUrl("/")
                     .permitAll()
                     .and()
@@ -112,7 +117,9 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
             webSecurity.ignoring().antMatchers(
                     "/",                     //根目录
                     "/media/**",
-                    "/sign/**",
+                    "/loginPage/**",
+                    "/user/register/**",
+                    "/**/register/**",
                     "/redirect/**",
                     "/api/**",
                     "/index/**",

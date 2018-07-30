@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +35,29 @@ public class UserController {
         } catch (Exception e) {
             logger.error("查询异常",e);
             result.setResult(false, "查询用户异常");
+        }
+        return result;
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public RequestResult register(@RequestParam String account,@RequestParam String email,@RequestParam String password) {
+        RequestResult result = new RequestResult();
+        User user = new User();
+        user.setAccount(account);
+        user.setEmail(email);
+        user.setPassword(password);
+        try {
+            int size = userService.register(user);
+            if(size>0){
+                result.setResult(true, "注册成功");
+            }else{
+                result.setResult(true, "注册失败");
+            }
+
+        } catch (Exception e) {
+            logger.error("查询异常",e);
+            result.setResult(false, "注册失败");
         }
         return result;
     }

@@ -1,4 +1,9 @@
+cn\aouo\common\util\JumpUtilController.class
+cn\aouo\common\exception\ExceptionController.class
 cn\aouo\sys\controller\IndexController.class
 cn\aouo\SpringBootStartApplication.class
+cn\aouo\sys\sec\AppUser.class
 cn\aouo\ApplicationInitializer$ApplicationSecurity.class
+cn\aouo\sys\sec\UserDetailsServiceImpl.class
+cn\aouo\sys\sec\CustmAuthenticationProvider.class
 cn\aouo\ApplicationInitializer.class
