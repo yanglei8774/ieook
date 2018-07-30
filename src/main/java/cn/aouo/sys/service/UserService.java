@@ -20,4 +20,6 @@ public interface UserService {
     public int delete(Integer id);
 
     public List<User> getUserByAccount(String account);
+
+    int register(User user);
 }

@@ -27,4 +27,7 @@ public interface UserMapper {
 
     @Select("SELECT * FROM ow_user WHERE account = #{account}")
     public List<User> getUserByAccount(String account);
+
+    @Insert("insert into ow_user(id, account, password, email,createDate) values(#{id}, #{account},#{password},#{email}, now())")
+    int register(User user);
 }

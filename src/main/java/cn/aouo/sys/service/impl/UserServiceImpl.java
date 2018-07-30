@@ -1,5 +1,7 @@
 package cn.aouo.sys.service.impl;
 
+import cn.aouo.common.util.EncoderHandler;
+import cn.aouo.common.util.UUIDUtil;
 import cn.aouo.sys.entity.User;
 import cn.aouo.sys.mapper.UserMapper;
 import cn.aouo.sys.service.UserService;
@@ -46,5 +48,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUserByAccount(String account) {
         return userMapper.getUserByAccount(account);
+    }
+
+    @Override
+    public int register(User user) {
+        user.setId(UUIDUtil.getUUID());
+        user.setPassword(EncoderHandler.encodeByMD5(user.getPassword()));
+//        user.setCreateDate(new Date());
+        return userMapper.register(user);
     }
 }
