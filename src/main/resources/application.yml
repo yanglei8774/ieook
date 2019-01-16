@@ -5,7 +5,7 @@ logging:
 
 ################### DataSource Configuration ##########################
 security:
-  ignored: /**/**.js,/**/**.css,/**/**.png,/**/**.jpg,/**/**.html,/**/favicon.ico,/**/**.mp3,/**/**.gif,/**/**.mp4, /**/css/**
+  ignored: /**/**.js,/**/**.css,/**/**.png,/**/**.jpg,/**/**.html,/**/**.php,/**/favicon.ico,/**/**.mp3,/**/**.gif,/**/**.mp4, /**/css/**
 
 spring:
   datasource:

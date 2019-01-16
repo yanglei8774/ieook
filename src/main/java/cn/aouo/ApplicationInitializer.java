@@ -124,7 +124,8 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter implements A
                     "/api/**",
                     "/index/**",
                     "/download/**",
-                    "/login_error"                  //登录错误页
+                    "/login_error",                  //登录错误页
+                    "/wechat/**"                  //
                     );
 
         }
