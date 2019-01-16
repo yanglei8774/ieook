@@ -7,11 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="10-spring-boot-view-thymeleaf" />
-        <module name="aouo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="10-spring-boot-view-thymeleaf" target="1.5" />
+      <module name="10-spring-boot-view-thymeleaf" target="1.7" />
       <module name="aouo" target="1.7" />
     </bytecodeTargetLevel>
   </component>
